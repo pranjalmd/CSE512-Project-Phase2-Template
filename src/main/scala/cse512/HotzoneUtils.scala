@@ -3,14 +3,9 @@ package cse512
 object HotzoneUtils {
 
   def isPointInside(queryRectangle: String, pointString: String ): Boolean = {
-    // YOU NEED TO CHANGE THIS PART
-    return true // YOU NEED TO CHANGE THIS PART
-  }
-
-  // YOU NEED TO CHANGE THIS PART
-  def isPointInside(rectangle: String, point: String): Boolean = {
     try{
       var rectanglePoints = new Array[String](4)
+      rectanglePoints  = queryRectangle.split(",")
       var p1x = rectanglePoints(0).trim().toDouble
       var p1y = rectanglePoints(1).trim().toDouble
       var p2x = rectanglePoints(2).trim().toDouble
@@ -39,7 +34,7 @@ object HotzoneUtils {
         maxY = p2y
       }
 
-      var testPoint = point.split(",")
+      var testPoint = pointString.split(",")
       var x = testPoint(0).trim().toDouble
       var y = testPoint(1).trim().toDouble
 

@@ -93,7 +93,7 @@ def runHotcellAnalysis(spark: SparkSession, pointPath: String): DataFrame =
     }
   }
 
-  val sortedResult = result.toSeq.sortBy(- _._2)
+  var sortedResult = result.toSeq.sortBy(- _._2)
   if (sortedResult.size > 50) {
     sortedResult = sortedResult.take(50)
   }
@@ -107,7 +107,7 @@ def runHotcellAnalysis(spark: SparkSession, pointPath: String): DataFrame =
     for (x <- -1 to 1) {
       for(y <- -1 to 1) {
         for(z <- -1 to 1) {
-          val temp = 0l
+          var temp = 0l
           if (homogenousPoints.contains("%d%d%d".format(coordinateX + z, coordinateY + y, coordinateZ + x))) {
             temp = pointMap(homogenousPoints("%d%d%d".format(coordinateX + z, coordinateY + y, coordinateZ + x)))
           }
