@@ -2,7 +2,7 @@ package cse512
 
 object HotzoneUtils {
 
-  def isPointInside(queryRectangle: String, pointString: String ): Boolean = {
+  def ST_Contains(queryRectangle: String, pointString: String ): Boolean = {
     try{
       var rectanglePoints = new Array[String](4)
       rectanglePoints  = queryRectangle.split(",")

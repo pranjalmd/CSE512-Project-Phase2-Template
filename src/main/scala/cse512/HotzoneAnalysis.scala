@@ -25,8 +25,8 @@ object HotzoneAnalysis {
     rectangleDf.createOrReplaceTempView("rectangle")
 
     // Join two datasets
-    spark.udf.register("isPointInside",(queryRectangle:String, pointString:String)=>(HotzoneUtils.isPointInside(queryRectangle, pointString)))
-    val joinDf = spark.sql("select rectangle._c0 as rectangle, point._c5 as point from rectangle,point where isPointInside(rectangle._c0,point._c5)")
+    spark.udf.register("ST_Contains",(queryRectangle:String, pointString:String)=>(HotzoneUtils.ST_Contains(queryRectangle, pointString)))
+    val joinDf = spark.sql("select rectangle._c0 as rectangle, point._c5 as point from rectangle,point where ST_Contains(rectangle._c0,point._c5)")
     joinDf.createOrReplaceTempView("joinResult")
 
     // YOU NEED TO CHANGE THIS PART
